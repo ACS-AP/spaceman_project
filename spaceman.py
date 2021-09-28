@@ -79,7 +79,10 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
 
-    pass
+    if guess in secret_word:
+        return True
+    else:
+        return False
 
 
 
