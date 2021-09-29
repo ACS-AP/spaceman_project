@@ -79,10 +79,18 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
 
-    if guess in secret_word:
-        return True
-    else:
+    i = 0
+
+    included = 0
+    for letter in secret_word:
+        if guess == letter:
+            secret_word[i] = str(guess)
+            included += 1    
+        i += 1
+    if included == 0:
         return False
+    else:
+        return True
 
 
 
