@@ -31,16 +31,11 @@ def is_word_guessed(secret_word, letters_guessed):
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
 
-    user_guess = ''
-
-    for i in range(len(secret_word)):
-        if secret_word[i] in letters_guessed:
-           user_guess += secret_word[i]
-
-    if secret_word == user_guess:
-        return True
+    for i in guessed_secret_word:
+        if i == ' - ':
+            return False
     else:
-        return False
+        return True
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
