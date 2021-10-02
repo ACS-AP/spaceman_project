@@ -1,6 +1,7 @@
 import random
 
-guessed_secret_word = []
+letters_guessed = []
+lives = 7
 
 def load_word():
     '''
@@ -31,11 +32,11 @@ def is_word_guessed(secret_word, letters_guessed):
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
 
-    for i in guessed_secret_word:
-        if i == ' - ':
+    for letter in secret_word:
+        if letter not in letters_guessed:
             return False
-    else:
-        return True
+        
+    return True
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
@@ -51,15 +52,12 @@ def get_guessed_word(secret_word, letters_guessed):
 
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
 
-    blanks = '_' * len(secret_word)
-    
-
-    for i in range(len(secret_word)):
-        if secret_word[i] in letters_guessed:
-            blanks = blanks[:i] + secret_word[i] + blanks[i+1:]
-    
-    for letter in blanks:
-        print(letter, end=' ')
+    for letter in secret_word:
+        if letter in letters_guessed:
+            print(letter, "", end=''),
+        else:
+            print(' _ ', end=''),
+    print('\n')
 
 
 def is_guess_in_word(guess, secret_word):
@@ -76,18 +74,15 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
 
-    i = 0
-
-    included = 0
-    for letter in secret_word:
-        if guess == letter:
-            secret_word[i] = str(guess)
-            included += 1    
-        i += 1
-    if included == 0:
-        return False
-    else:
+    global lives
+    if guess in secret_word:
+        print('Congrats you got a letter! Letters guessed: ', letters_guessed)
         return True
+    else:
+        lives -= 1
+        print("Wrong choice, guess again! Letters guessed: ", letters_guessed)
+        print(f"You have", lives, "guesses left")
+        return False
 
 
 
