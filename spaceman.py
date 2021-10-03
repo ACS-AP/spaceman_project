@@ -113,9 +113,9 @@ def spaceman(secret_word):
     print("Are you read to start the game!")
     startGame = input("Are you ready to start the game [Y/N]: ")
 
-    if startGame == "N":
+    if startGame.upper() == "N":
         print("Thanks for playing. Hope to see you soon.")
-    if startGame == "Y":
+    if startGame.upper() == "Y":
         get_guessed_word(secret_word, guessed_letters)
         while missedGuesses < 7:
             guessesLeft = 7 - missedGuesses
